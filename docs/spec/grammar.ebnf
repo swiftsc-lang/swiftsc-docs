@@ -1,0 +1,102 @@
+(* SwiftSec EBNF Grammar Specification *)
+(* Status: Draft M2.1 *)
+
+program = { item } ;
+
+item
+    = contract_def
+    | struct_def
+    | enum_def
+    | const_def
+    | use_decl
+    ;
+
+(* Contract Definition *)
+contract_def = "contract", type_identifier, "{", { contract_item }, "}" ;
+
+contract_item
+    = storage_block
+    | event_def
+    | constructor_def
+    | function_def
+    | struct_def
+    | enum_def
+    | const_def
+    ;
+
+(* Storage *)
+storage_block = "storage", "{", { storage_field }, "}" ;
+storage_field = identifier, ":", type, [ "=", expression ], ";" ;
+
+(* Functions *)
+function_def = [ "pub" ], "fn", identifier, "(", [ param_list ], ")", [ "->", type ], block ;
+constructor_def = "init", "(", [ param_list ], ")", block ;
+
+param_list = param, { ",", param }, [ "," ] ;
+param = identifier, ":", type ;
+
+(* Types *)
+type
+    = path_type
+    | array_type
+    | tuple_type
+    | "Address"
+    | "bool"
+    | "String"
+    | integer_type
+    ;
+
+path_type = identifier, [ "::", identifier ]*, [ generic_args ] ;
+array_type = "[", type, ";", expression, "]" | "[", type, "]" ;
+generic_args = "<", type, { ",", type }, ">" ;
+
+integer_type = "u8" | "u16" | "u32" | "u64" | "u128" | "i8" | "i16" | "i32" | "i64" | "i128" ;
+
+(* Block & Statements *)
+block = "{", { statement }, "}" ;
+
+statement
+    = let_stmt
+    | assignment_stmt
+    | expression_stmt
+    | return_stmt
+    | if_stmt
+    | while_stmt
+    | for_stmt
+    | emit_stmt
+    ;
+
+let_stmt = "let", [ "mut" ], identifier, [ ":", type ], "=", expression, ";" ;
+assignment_stmt = expression, assignment_op, expression, ";" ;
+expression_stmt = expression, [ ";" ] ; (* Semicolon optional if it's the last expr in block return *)
+return_stmt = "return", [ expression ], ";" ;
+emit_stmt = "emit", identifier, "(", [ arg_list ], ")", ";" ;
+
+(* Control Flow *)
+if_stmt = "if", expression, block, [ "else", ( block | if_stmt ) ] ;
+while_stmt = "while", expression, block ;
+for_stmt = "for", identifier, "in", expression, block ;
+
+(* Expressions (Simplified Precedence) *)
+expression
+    = literal
+    | identifier
+    | binary_expr
+    | unary_expr
+    | function_call
+    | struct_init
+    | index_expr
+    | field_access
+    ;
+
+function_call = expression, "(", [ arg_list ], ")" ;
+arg_list = expression, { ",", expression }, [ "," ] ;
+
+struct_init = path_type, "{", [ field_init_list ], "}" ;
+field_init_list = field_init, { ",", field_init }, [ "," ] ;
+field_init = identifier, ":", expression ;
+
+(* Literals *)
+literal = integer_lit | string_lit | bool_lit | byte_lit ;
+bool_lit = "true" | "false" ;
+assignment_op = "=" | "+=" | "-=" | "*=" | "/=" | "%=" ;
