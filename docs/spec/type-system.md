@@ -1,11 +1,11 @@
-# SwiftSec Type System Specification
+# SwiftSC-Lang Type System Specification
 
 > **Status**: Draft M2.2  
 > **Date**: 2025-12-17  
 > **Author**: Language Design Team
 
 ## 1. Overview
-SwiftSec employs a **static, strong, affine-linear type system**.
+SwiftSC-Lang employs a **static, strong, affine-linear type system**.
 - **Static**: All types known at compile time.
 - **Strong**: No implicit type coercion (except safe widening).
 - **Affine/Linear**: Resources must be used exactly once (linear) or at most once (affine).
@@ -84,7 +84,7 @@ Simplified Rust model suited for single-threaded WASM.
 3.  References must always be valid (no null, no dangling).
 
 ### 5.2 Lifetime Elision
-In SwiftSec, lifetime annotations (`'a`) are **hidden** in 99% of cases.
+In SwiftSC-Lang, lifetime annotations (`'a`) are **hidden** in 99% of cases.
 - **Contract Scope**: State lives forever (persists between calls).
 - **Function Scope**: Arguments live as long as the function call.
 - The compiler enforces that references do not escape their valid scope.

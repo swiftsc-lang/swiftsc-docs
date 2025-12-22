@@ -1,11 +1,11 @@
-# SwiftSec Compiler Architecture
+# SwiftSC-Lang Compiler Architecture
 
 > **Status**: Phase 2 Design  
 > **Date**: 2025-12-17  
 > **Author**: Compiler Engineering Team
 
 ## 1. Overview
-The SwiftSec Compiler (`swiftsc`) is a multi-pass compiler written in Rust. It transforms high-level SwiftSec source code (`.sec`) into efficient WebAssembly (`.wasm`) modules.
+The SwiftSC-Lang Compiler (`swiftsc`) is a multi-pass compiler written in Rust. It transforms high-level SwiftSC-Lang source code (`.sec`) into efficient WebAssembly (`.wasm`) modules.
 
 ## 2. Compilation Pipeline
 

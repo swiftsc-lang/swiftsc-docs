@@ -1,6 +1,6 @@
-# SwiftSec Documentation
+# SwiftSC-Lang Documentation
 
-Welcome to the internal documentation for **SwiftSec**, the next-generation smart contract language.
+Welcome to the internal documentation for **SwiftSC-Lang**, the next-generation smart contract language.
 
 ## 📚 Table of Contents
 

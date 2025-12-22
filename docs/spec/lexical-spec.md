@@ -1,4 +1,4 @@
-# SwiftSec Lexical Specification
+# SwiftSC-Lang Lexical Specification
 
 > **Status**: Draft (M2.1)  
 > **Date**: 2025-12-17  

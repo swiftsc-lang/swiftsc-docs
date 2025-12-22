@@ -8,9 +8,9 @@
 To provide mathematical proof of contract correctness, going beyond unit testing.
 
 ## 2. Approach: Specification Language
-SwiftSec will support optional "Specification Conditions" annotated directly on functions.
+SwiftSC-Lang will support optional "Specification Conditions" annotated directly on functions.
 
-```swiftsec
+```swiftsc-lang
 /// @invariant self.total_supply == self.balances.values().sum()
 contract Token {
     
@@ -21,7 +21,7 @@ contract Token {
 ```
 
 ## 3. Verification Backend
-- **Translation**: SwiftSec source -> SMT-LIB v2 format.
+- **Translation**: SwiftSC-Lang source -> SMT-LIB v2 format.
 - **Solver**: Integration with Z3 or CVC5.
 - **Scope**:
     - **Bounded Model Checking**: Prove properties hold for traces up to length N.

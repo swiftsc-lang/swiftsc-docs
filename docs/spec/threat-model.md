@@ -1,16 +1,16 @@
-# SwiftSec Threat Model
+# SwiftSC-Lang Threat Model
 
 > **Status**: Phase 1 Specification  
 > **Date**: 2025-12-17  
 > **Author**: Security Engineering Team
 
 ## 1. Introduction
-This document defines the security boundaries, potential adversaries, and guarantees provided by the SwiftSec language and runtime environment.
+This document defines the security boundaries, potential adversaries, and guarantees provided by the SwiftSC-Lang language and runtime environment.
 
 ## 2. Trust Boundaries
 
 ### 2.1 Trusted Components (TCB)
-- **The SwiftSec Compiler**: We assume the compiler correctly translates valid source to WASM.
+- **The SwiftSC-Lang Compiler**: We assume the compiler correctly translates valid source to WASM.
 - **The WASM Runtime**: The blockchain's VM (Wasmtime/Wasmi) allows correct execution.
 - **The Consensus Engine**: The underlying blockchain correctly orders and validates transactions.
 
@@ -54,11 +54,11 @@ This document defines the security boundaries, potential adversaries, and guaran
 ## 5. Security Guarantees
 
 ### 5.1 Deterministic Execution
-SwiftSec guarantees that for a given State $S$ and Input $I$, the Output $O$ and New State $S'$ are always identical across all nodes.
+SwiftSC-Lang guarantees that for a given State $S$ and Input $I$, the Output $O$ and New State $S'$ are always identical across all nodes.
 - **Mitigation**: No floating point, no nondeterministic iteration (e.g., iterating hash maps keys).
 
 ### 5.2 Isolation
-A crash or panic in a SwiftSec contract will **revert** the transaction but **never** corrupt the memory of the host or other contracts.
+A crash or panic in a SwiftSC-Lang contract will **revert** the transaction but **never** corrupt the memory of the host or other contracts.
 - **Mitigation**: WASM Sandbox + Stack depth limits.
 
 ### 5.3 Type Safety

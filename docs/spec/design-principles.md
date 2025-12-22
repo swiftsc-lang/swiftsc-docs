@@ -1,4 +1,4 @@
-# SwiftSec Design Principles
+# SwiftSC-Lang Design Principles
 
 > **Status**: Permanent Core Values  
 > **Date**: 2025-12-17

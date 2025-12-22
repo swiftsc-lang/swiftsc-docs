@@ -2,10 +2,10 @@
 
 > **Status**: Phase 1 Research Findings  
 > **Date**: 2025-12-17  
-> **Author**: SwiftSec Research Team
+> **Author**: SwiftSC-Lang Research Team
 
 ## 1. The Multi-Chain Challenge
-SwiftSec targets **WASM** environments. However, every chain exposes a different "Host Interface" (ABI) for basic operations like:
+SwiftSC-Lang targets **WASM** environments. However, every chain exposes a different "Host Interface" (ABI) for basic operations like:
 - Getting user balance.
 - Transferring funds.
 - Reading/Writing storage.
@@ -21,11 +21,11 @@ SwiftSec targets **WASM** environments. However, every chain exposes a different
 | **Stellar** (Soroban) | WASM | Host functions | Value transparency, strict bounds. |
 
 ## 3. The Adapter Architecture
-SwiftSec will avoid code fragmentation by defining a **Standard Host Interface (SHI)**.
+SwiftSC-Lang will avoid code fragmentation by defining a **Standard Host Interface (SHI)**.
 
-### 3.1 The "SwiftSec Standard Library" Abstraction
+### 3.1 The "SwiftSC-Lang Standard Library" Abstraction
 Developers write:
-```swiftsec
+```swiftsc-lang
 // Generic code
 let balance = std::chain::balance_of(user);
 ```
@@ -45,9 +45,9 @@ env::account_balance(...)
 ```
 
 ## 4. Cross-Chain Messaging (XCM / IBC)
-For v1, SwiftSec will treat cross-chain messages as byte arrays.
+For v1, SwiftSC-Lang will treat cross-chain messages as byte arrays.
 - **Polkadot**: Support XCM v3 types in `std::polkadot`.
 - **Cosmos**: Support IBC packet formation in `std::ibc`.
 
 ## 5. Conclusion
-SwiftSec core will be chain-agnostic. The `std` library will use conditional compilation (feature flags) to swap out the underlying host calls during part of the codegen phase.
+SwiftSC-Lang core will be chain-agnostic. The `std` library will use conditional compilation (feature flags) to swap out the underlying host calls during part of the codegen phase.
