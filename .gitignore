@@ -1,17 +1,19 @@
-# OS generated files
-.DS_Store
-Thumbs.db
+# Rust / WASM Standard Gitignore
+/target
+/build
+Cargo.lock
 
-# Editor directories and files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Temporary files
-*.tmp
-*.log
+# OS
+.DS_Store
+Thumbs.db
 
-# Build outputs
-build/
-dist/
+# SwiftSC Specific
+*.wasm
+*.disasm
+*.bin
