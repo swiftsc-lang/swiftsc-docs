@@ -1,11 +1,11 @@
-# SwiftSec Language Requirements Specification
+# SwiftSC-Lang Language Requirements Specification
 
 > **Status**: Phase 1 Specification  
 > **Date**: 2025-12-17  
 > **Author**: Language Design Team
 
 ## 1. Design Goals
-SwiftSec aims to be the safest and most developer-friendly smart contract language for the WASM ecosystem.
+SwiftSC-Lang aims to be the safest and most developer-friendly smart contract language for the WASM ecosystem.
 
 ### 1.1 Core Principles
 1.  **Safety by Default**: No unsafe operations (e.g., unchecked math, raw pointers) without explicit `unsafe` blocks.
@@ -20,7 +20,7 @@ SwiftSec aims to be the safest and most developer-friendly smart contract langua
 
 ### 2.1 Code Structure
 Contracts are defined as `contract` blocks (similar to `class` in TS or `mod` in Rust).
-```swiftsec
+```swiftsc-lang
 contract Token {
     // State variables
     storage balance: Map<Address, u64>;
@@ -52,7 +52,7 @@ contract Token {
 ---
 
 ## 3. Type System
-SwiftSec employs a **Strong, Static, Linear** type system.
+SwiftSC-Lang employs a **Strong, Static, Linear** type system.
 
 ### 3.1 Primitive Types
 - **Integers**: `u8`, `u16`, `u32`, `u64`, `u128`, `U256` (bigint), `i8`...
@@ -68,7 +68,7 @@ SwiftSec employs a **Strong, Static, Linear** type system.
 
 ### 3.3 Linear Types (Resources)
 Types annotated with `@resource` (or separate keyword `resource`) must be used exactly once. They cannot be ignored or overwritten.
-```swiftsec
+```swiftsc-lang
 resource NFT {
     id: u64
 }

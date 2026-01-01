@@ -1,4 +1,4 @@
-(* SwiftSec EBNF Grammar Specification *)
+(* SwiftSC-Lang EBNF Grammar Specification *)
 (* Status: Draft M2.1 *)
 
 program = { item } ;

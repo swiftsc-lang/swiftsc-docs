@@ -1,6 +1,6 @@
-# SwiftSec Documentation
+# SwiftSC-Lang Documentation
 
-Welcome to the internal documentation for **SwiftSec**, the next-generation smart contract language.
+Welcome to the internal documentation for **SwiftSC-Lang**, the next-generation smart contract language.
 
 ## 📚 Table of Contents
 
@@ -15,13 +15,16 @@ Analysis of the current ecosystem to inform our design decisions.
 ### Phase 2: Specification
 The core defining documents for the language.
 - [Language Requirements](spec/language-requirements.md): Syntax, type system, and memory safety rules.
+- [Module System Spec](spec/module-system.md): **[NEW]** File-based modules and dependency resolution.
+- [Error Handling Spec](spec/error-handling.md): **[NEW]** `Result` types and the `?` operator semantics.
 - [Threat Model](spec/threat-model.md): Trust boundaries and attacker capabilities.
 - [Design Principles](spec/design-principles.md): Core philosophy (Safety > Flexibility).
 
 ### Phase 3: Architecture
 How we are building the compiler.
 - [Compiler Overview](architecture/compiler-overview.md): Pipeline from source to WASM.
+- [Memory Management](architecture/memory-management.md): **[NEW]** ARC implementation and memory-safe strings.
 
 ---
 
-> This documentation is a living resource. Please update it as design decisions evolve.
+> This documentation is a living resource.

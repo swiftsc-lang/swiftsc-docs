@@ -2,19 +2,19 @@
 
 > **Status**: Phase 1 Research Findings  
 > **Date**: 2025-12-17  
-> **Author**: SwiftSec Research Team
+> **Author**: SwiftSC-Lang Research Team
 
 ## 1. Executive Summary
 
-We analyzed five major smart contract languages—Solidity, Rust (via Ink!/CosmWasm), Move, Cairo, and Vyper—to strictly define the feature set for SwiftSec. Our goal was to identify successful patterns to adopt and anti-patterns to avoid.
+We analyzed five major smart contract languages—Solidity, Rust (via Ink!/CosmWasm), Move, Cairo, and Vyper—to strictly define the feature set for SwiftSC-Lang. Our goal was to identify successful patterns to adopt and anti-patterns to avoid.
 
-**Conclusion**: SwiftSec should adopt the **WASM-native compilation** of Rust, the **resource-oriented safety** of Move, and the **approachable syntax** of TypeScript/Solidity (but with stricter semantics).
+**Conclusion**: SwiftSC-Lang should adopt the **WASM-native compilation** of Rust, the **resource-oriented safety** of Move, and the **approachable syntax** of TypeScript/Solidity (but with stricter semantics).
 
 ---
 
 ## 2. Comparative Matrix
 
-| Feature | Solidity (EVM) | Rust (Near/Cosmos) | Move (Aptos/Sui) | Cairo (Starknet) | SwiftSec (Goal) |
+| Feature | Solidity (EVM) | Rust (Near/Cosmos) | Move (Aptos/Sui) | Cairo (Starknet) | SwiftSC-Lang (Goal) |
 |:---|:---|:---|:---|:---|:---|
 | **Execution Model** | EVM (Stack-based) | WASM (Stack-based) | MoveVM (Register) | Cairo VM (ZK-friendly) | **WASM (Stack-based)** |
 | **Type System** | Static (Weak) | Static (Strong, Affine) | Static (Linear/Affine) | Static (Felt-based) | **Static (Strong + Linear)** |
@@ -38,7 +38,7 @@ We analyzed five major smart contract languages—Solidity, Rust (via Ink!/CosmW
 - **Loose Typing**: Implicit conversions can lead to subtle bugs.
 - **EVM Legacy**: 256-bit word size is inefficient for general computation.
 
-**SwiftSec Decision**: Adopt Solidity's high-level contract structure (easy adoption) but enforce strict safety like Rust.
+**SwiftSC-Lang Decision**: Adopt Solidity's high-level contract structure (easy adoption) but enforce strict safety like Rust.
 
 ### 3.2 Rust (The Safety Standard)
 **Strengths**:
@@ -50,7 +50,7 @@ We analyzed five major smart contract languages—Solidity, Rust (via Ink!/CosmW
 - **Boilerplate**: Smart contracts in pure Rust (e.g., ink!) are verbose.
 - **Binary Size**: Compiles to large WASM binaries without careful optimization.
 
-**SwiftSec Decision**: Simplify the borrow checker (restrict to single-threaded contract model) and use a zero-cost abstraction standard library to minimize WASM size.
+**SwiftSC-Lang Decision**: Simplify the borrow checker (restrict to single-threaded contract model) and use a zero-cost abstraction standard library to minimize WASM size.
 
 ### 3.3 Move (The Resource Model)
 **Strengths**:
@@ -61,13 +61,13 @@ We analyzed five major smart contract languages—Solidity, Rust (via Ink!/CosmW
 - **Fragmented Ecosystem**: Sui Move vs. Aptos Move.
 - **Limited Libraries**: Standard library is still growing.
 
-**SwiftSec Decision**: Implement "Resources" as a first-class citizen using linear types (must be used exactly once).
+**SwiftSC-Lang Decision**: Implement "Resources" as a first-class citizen using linear types (must be used exactly once).
 
 ---
 
-## 4. Key Design Decisions for SwiftSec
+## 4. Key Design Decisions for SwiftSC-Lang
 
-Based on this landscape analysis, SwiftSec will implement:
+Based on this landscape analysis, SwiftSC-Lang will implement:
 
 1.  **Mandatory Resource Types**: Like Move, assets (Tokens, NFTs) will be linear types that must be deposited or transferred, never dropped.
 2.  **No Unchecked Arithmetic**: All math operations trap on overflow by default.

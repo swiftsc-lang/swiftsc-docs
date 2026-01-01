@@ -1,4 +1,4 @@
-# SwiftSec Standard Library API
+# SwiftSC-Lang Standard Library API
 
 > **Status**: Draft M2.3  
 > **Date**: 2025-12-17  
