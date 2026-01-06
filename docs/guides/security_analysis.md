@@ -1,8 +1,8 @@
-# SwiftSC Security Analysis (V1.0.3-beta)
+# SwiftSC Security Analysis (V1.0.3)
 
 ## Overview
 
-The `swiftsc-analyzer` is a static analysis tool integrated into the CLI and LSP. In V1.0.3-beta, it has been hardened with three critical security passes designed to catch common smart contract vulnerabilities before deployment.
+The `swiftsc-analyzer` is a static analysis tool integrated into the CLI and LSP. In V1.0.3, it has been hardened with three critical security passes designed to catch common smart contract vulnerabilities before deployment.
 
 ## New Detection Rules
 
@@ -32,7 +32,7 @@ func withdraw(amount: u64) {
 
 **ID**: `SEC-003`
 
-Detects arithmetic operations (`+`, `-`, `*`) that are not wrapped in checked contexts. In SwiftSC V1.0.3-beta, standard operators do not trap on overflow by default for performance, so critical logic must use `SafeMath`.
+Detects arithmetic operations (`+`, `-`, `*`) that are not wrapped in checked contexts. In SwiftSC V1.0.3, standard operators do not trap on overflow by default for performance, so critical logic must use `SafeMath`.
 
 **Recommendation**: Use `math::add`, `math::sub`, etc., for sensitive value transfers.
 
