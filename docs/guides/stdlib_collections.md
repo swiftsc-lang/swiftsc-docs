@@ -2,7 +2,7 @@
 
 ## Overview
 
-V1.0.3-beta introduces the `Collections` module to `swiftsc-stdlib`. This provides essential data structures for managing dynamic data in smart contracts.
+V1.0.3 introduces the `Collections` module to `swiftsc-stdlib`. This provides essential data structures for managing dynamic data in smart contracts.
 
 ## Available Collections
 

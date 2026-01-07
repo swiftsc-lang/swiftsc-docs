@@ -1,8 +1,8 @@
-# Gas Metering in SwiftSC V1.0.3-beta
+# Gas Metering in SwiftSC V1.0.3
 
 ## Overview
 
-SwiftSC V1.0.3-beta introduces automated **Gas Metering** to the compiler backend. This feature ensures that all smart contract execution is finite and deterministic by injecting cost-accounting instructions into the generated WebAssembly.
+SwiftSC V1.0.3 introduces automated **Gas Metering** to the compiler backend. This feature ensures that all smart contract execution is finite and deterministic by injecting cost-accounting instructions into the generated WebAssembly.
 
 ## How It Works
 
